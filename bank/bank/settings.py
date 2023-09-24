@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'home',
     'accounts',
     'exchange_currency',
-    'widget_tweaks',
     'channels',
     'dramatiq',
     'django_dramatiq',
