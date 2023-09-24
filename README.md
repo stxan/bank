@@ -17,7 +17,7 @@
 ## Требования к окружению
 Для успешного запуска проекта необходимо наличие следующего окружения:
 
-- Python (версия 3.7+)
+- Python (версия 3.11+)
 - RabbitMQ (для обеспечения очереди сообщений)
 - База данных (например, Sqlite)
 
@@ -46,7 +46,7 @@ This pet project is an online bank implemented using the Django framework. The p
 ## Environment Requirements
 To successfully run the project, the following environment is required:
 
-- Python (version 3.7+)
+- Python (version 3.11+)
 - RabbitMQ (for message queuing)
 - Database (e.g., Sqlite)
 
