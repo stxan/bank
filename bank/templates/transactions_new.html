@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Перевод средств</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+</head>
+<body>
+    <section class="hero is-primary">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title">Перевод средств </h1>
+                <h2 class="subtitle">{{user.username}}, введите данные для перевода</h2>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <!-- Навигационная панель -->
+                <div class="column is-3">
+                    <aside class="menu">
+                        <p class="menu-label">Меню</p>
+                        <ul class="menu-list">
+                            <li><a href="/">Главная</a></li>
+                            <li><a href="/exchange_currency/">Курсы валют</a></li>
+                            <li><a href="/profile">Личный кабинет</a></li>
+                            <li><a href="../transactions_new">Сделать перевод</a></li>
+                            <li><a href="../deposit">Пополнить баланс</a></li>
+                            <li><a href="../accounts/logout">Выйти из аккаунта</a></li>
+                        </ul>
+                    </aside>
+                </div>
+                <div class="column is-9">
+                    <!-- Форма перевода средств -->
+                    <div class="box">
+                        <form method="post" action="{% url 'transactions_new' %}">
+                          {% csrf_token %}
+                            <div class="field">
+                                <h3 class="title is-4">Доступный баланс</h3>
+                                <p class="is-size-3"> {{current_balance}} </p>
+                            </div>
+                            <div class="field">
+                                <label class="label">Получатель</label>
+                                <input type="hidden" name="sender_username" value="{{ user.username }}">
+                                <div class="control">
+                                    <input class="input" type="text"
+                                           name="receiver_username" placeholder="Логин пользователя">
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label class="label">Сумма перевода</label>
+                                <div class="control">
+                                    <input class="input" type="number" min="100" name="amount" placeholder="Сумма">
+                                </div>
+                            </div>
+                            <div class="field">
+                                <div class="control">
+                                    <button class="button is-primary">Отправить</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<div id="notification" class="notification is-success" style="display:none;">
+  Вы перевели пользователю {{receiver}} {{data}} единиц!
+</div>
+
+<div id="notification_fail" class="notification is-danger" style="display:none;">
+    {{error_message}}
+</div>
+
+<script>
+  // После успешной операции
+  function showNotification() {
+    const notification = document.getElementById("notification");
+    notification.style.display = "block";
+    setTimeout(function() {
+      notification.style.display = "none";
+    }, 5000);
+  }
+  function showNotification_fail() {
+    const notification = document.getElementById("notification_fail");
+    notification.style.display = "block";
+    setTimeout(function() {
+      notification.style.display = "none";
+    }, 5000);
+  }
+    {% if success %}
+        window.onload = showNotification;
+    {% endif %}
+    {% if success == False %}
+        window.onload = showNotification_fail;
+    {% endif %}
+</script>
+
+</body>
+</html>

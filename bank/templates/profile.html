@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>StoBank</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  </head>
+  <body>
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="http://127.0.0.1:8000/">
+      <img src="https://avatars.mds.yandex.net/i?id=435b694726032ab5d62e7e7e3458746e83c2251c-9139469-images-thumbs&n=13">
+    </a>
+
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      <a class="navbar-item" href="http://127.0.0.1:8000/">
+        Главная
+      </a>
+
+      <a class="navbar-item" href="http://127.0.0.1:8000/profile">
+        Личный кабинет
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          Ещё...
+        </a>
+
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="http://127.0.0.1:8000/about">
+            О нас
+          </a>
+          <a class="navbar-item" href="http://127.0.0.1:8000/contacts">
+            Контакты
+          </a>
+          <hr class="navbar-divider">
+          <a class="navbar-item" href="http://127.0.0.1:8000/report">
+            Сообщить о проблеме
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="buttons">
+          <a class="button is-light" href="http://127.0.0.1:8000/accounts/logout">
+            Выйти
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+  <p>Здравствуйте, {{ user.username }}!
+  Ваш баланс: {{ data.value }}</p>
+{% else %}
+  <html>
+    <head>
+        <meta http-equiv="Refresh" content="0; URL=http://127.0.0.1:8000/accounts/login/">
+    </head>
+<body>
+</body>
+</html>
+{%endif%}
+  {%endblock%}
+

@@ -1,0 +1,25 @@
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Subject: Password reset on 127.0.0.1:8000
+From: webmaster@localhost
+To: rostik@mail.ru
+Date: Thu, 21 Sep 2023 01:09:39 -0000
+Message-ID: <169525857903.3676.15011796605234370698@LAPTOP-A08NHOOH>
+
+
+You're receiving this email because you requested a password reset for your user account at 127.0.0.1:8000.
+
+Please go to the following page and choose a new password:
+
+http://127.0.0.1:8000/accounts/reset/MjE/buuzk2-a2c9a3c5ca1e4be59b5d6846cac784f5/
+
+Your username, in case you’ve forgotten: rostislave
+
+Thanks for using our site!
+
+The 127.0.0.1:8000 team
+
+
+
+-------------------------------------------------------------------------------

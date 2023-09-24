@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Переводы</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.2/css/bulma.min.css">
+</head>
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="http://127.0.0.1:8000/">
+      <img src="https://avatars.mds.yandex.net/i?id=435b694726032ab5d62e7e7e3458746e83c2251c-9139469-images-thumbs&n=13">
+    </a>
+
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      <a class="navbar-item" href="http://127.0.0.1:8000/">
+        Главная
+      </a>
+
+      <a class="navbar-item" href="http://127.0.0.1:8000/profile">
+        Личный кабинет
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          Ещё...
+        </a>
+
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="http://127.0.0.1:8000/about">
+            О нас
+          </a>
+          <a class="navbar-item" href="http://127.0.0.1:8000/contacts">
+            Контакты
+          </a>
+          <hr class="navbar-divider">
+          <a class="navbar-item" href="http://127.0.0.1:8000/report">
+            Сообщить о проблеме
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="buttons">
+          <a class="button is-primary" href="http://127.0.0.1:8000/deposit">
+            <strong>Пополнить баланс</strong>
+          </a>
+          <a class="button is-primary" href="http://127.0.0.1:8000/transactions">
+            <strong>Переводы</strong>
+          </a>
+          <a class="button is-light" href="http://127.0.0.1:8000/accounts/logout">
+            Выйти
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+<body>
+    <div class="container">
+        <h1 class="title">Форма перевода</h1>
+        <form method="post" action="{% url 'transactions' %}">
+            {% csrf_token %}
+            <div class="field">
+                <label class="label">Логин</label>
+                <div class="control">
+                    <input class="input" type="text" name="receiver_username" placeholder="Введите логин">
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">Сумма перевода</label>
+                <div class="control">
+                    <input class="input" type="text" name="amount" placeholder="Введите сумму перевода">
+                </div>
+            </div>
+            <div class="field">
+                <div class="control">
+                    <button class="button is-primary" type="submit">Отправить</button>
+                </div>
+            </div>
+            {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                        <li>{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </form>
+    </div>
+</body>
+</html>

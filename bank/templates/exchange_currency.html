@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Личный кабинет</title>
+    <!-- Подключение стилей Bulma -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static '/css/tooltips.css' %}">
+
+</head>
+<body>
+    <section class="hero is-primary">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title">Текущие курсы валют</h1>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <!-- Навигационная панель -->
+                <div class="column is-3">
+                    <aside class="menu">
+                        <p class="menu-label">Меню</p>
+                        <ul class="menu-list">
+                            <li><a href="/">Главная</a></li>
+                            <li><a href="#">Курсы валют</a></li>
+                            <li><a href="/profile">Личный кабинет</a></li>
+                            <li><a href="../transactions_new">Сделать перевод</a></li>
+                            <li><a href="../deposit">Пополнить баланс</a></li>
+                            <li><a href="../accounts/logout">Выйти из аккаунта</a></li>
+                        </ul>
+                    </aside>
+                </div>
+                <section class="box">
+                    <div class="container">
+                        <div class="columns is-multiline">
+                            {% for elem in currencies %}
+                            <div class="column is-one-third">
+                                <div class="notification is-primary">
+                                    <strong>
+                                        <span class="tooltip" data-tooltip="{{elem.currency_name}}">
+                                            {{elem.currency_code}}</span>
+                                        <p class="subtitle is-3">{{elem.rate}}</p>
+                                    </strong>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

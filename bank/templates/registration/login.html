@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %}Вход{% endblock %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+    <html>
+        <head>
+            <meta http-equiv="Refresh" content="1; URL=/profile">
+        </head>
+    <body>
+    </body>
+    </html>
+{% else %}
+    <section class="hero is-fullheight is-bold is-primary">
+        <div class="hero-body">
+            <div class="container">
+                <div class="columns is-centered">
+                    <div class="column is-half">
+                        <h2 class="title is-2 has-text-centered">Добро пожаловать!</h2>
+                        <form method="post" class="box">
+                            {% csrf_token %}
+                            <div class="field">
+                                <div class="control has-text-centered">
+                                    {{ form.as_p }}
+                                </div>
+                            </div>
+                            <div class="field is-grouped is-grouped-centered">
+                                <div class="control">
+                                    <button class="button is-link" type="submit">Войти</button>
+                                </div>
+                            </div>
+                            <div class="has-text-centered">
+                                <a href="{% url 'register' %}" class="has-text-primary">Зарегистрироваться</a>
+                                <span class="has-text-grey"> | </span>
+                                <a href="{% url 'password_reset' %}" class="has-text-primary">Забыли пароль?</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endif %}
+
+{% endblock %}

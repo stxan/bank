@@ -1,0 +1,68 @@
+<!-- templates/deposit.html -->
+{% extends 'base.html' %}
+
+{% block title %}Пополнение баланса{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Пополнение баланса</title>
+    <!-- Подключение стилей Bulma -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+</head>
+<body>
+    <section class="hero is-primary">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title">Пополнение баланса</h1>
+                <h2 class="subtitle">Увеличьте свой баланс для проведения операций</h2>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <!-- Навигационная панель -->
+                <div class="column is-3">
+                    <aside class="menu">
+                        <p class="menu-label">Меню</p>
+                        <ul class="menu-list">
+                            <li><a href="/">Главная</a></li>
+                            <li><a href="/exchange_currency/">Курсы валют</a></li>
+                            <li><a href="../profile">Личный кабинет</a></li>
+                            <li><a href="../transactions_new">Сделать перевод</a></li>
+                            <li><a href="#">Пополнить баланс</a></li>
+                            <li><a href="../accounts/logout">Выйти из аккаунта</a></li>
+                        </ul>
+                    </aside>
+                </div>
+                <div class="column">
+                    <div class="box">
+                        <h3 class="title is-4">Пополнение баланса</h3>
+                        <form method="post" action="{% url 'deposit_button' %}">
+                            {% csrf_token %}
+                            <div class="field">
+                                <label class="label">Сумма пополнения</label>
+                                <div class="control">
+                                    <input class="input" type="number" min="100" name="amount" placeholder="Введите сумму">
+                                </div>
+                            </div>
+                            <div class="field">
+                                <div class="control">
+                                    <button class="button is-primary" type="submit">Пополнить</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
+
+{% endif %}
+{% endblock %}

@@ -1,0 +1,25 @@
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Subject: Password reset on 127.0.0.1:8000
+From: webmaster@localhost
+To: stoletniy.av@gmail.com
+Date: Tue, 19 Sep 2023 16:38:56 -0000
+Message-ID: <169514153669.17380.10068622170411407930@LAPTOP-A08NHOOH>
+
+
+You're receiving this email because you requested a password reset for your user account at 127.0.0.1:8000.
+
+Please go to the following page and choose a new password:
+
+http://127.0.0.1:8000/accounts/reset/Mg/bush8w-4794c52726185aa11860134104f8ef24/
+
+Your username, in case you’ve forgotten: alex
+
+Thanks for using our site!
+
+The 127.0.0.1:8000 team
+
+
+
+-------------------------------------------------------------------------------
