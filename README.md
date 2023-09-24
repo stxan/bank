@@ -26,3 +26,33 @@
 2. Убедитесь, что запущен сервер RabbitMQ.
 3. Запустите сервер командой py manage.py runserver
 4. Запустите скрипты в отдельных терминалах: dramatiq exchange_currency.tasks -p 1 и py tasks.py
+
+# Online Bank Pet Project
+
+## Project Description
+This pet project is an online bank implemented using the Django framework. The project allows users to perform various banking operations such as transfers and balance replenishment. The project also includes a user registration and authentication system. However, one of the main features of the project is the presence of a page with current currency exchange rates, which is updated in the background through the API of the Central Bank of Russia.
+
+## Key Features
+1. **Registration**: Users can register an account in the system by providing the necessary personal information. Account login, password change, and password recovery are supported.
+
+2. **Balance Replenishment**: Registered users can replenish their balance.
+
+3. **Transfers**: Users can make monetary transfers to other users within the system. This includes specifying the transfer amount and recipient.
+
+4. **Currency Exchange Rates Page**: The system updates current currency exchange rates through the Central Bank of Russia's API. Users can view up-to-date currency exchange rates.
+
+5. **Technologies**: RabbitMQ and Dramatiq technologies were used to implement the project. RabbitMQ is used to provide asynchronous communication between system components, and Dramatiq allows easy management of background tasks and event processing. The frontend is implemented using Bulma.
+
+## Environment Requirements
+To successfully run the project, the following environment is required:
+
+- Python (version 3.7+)
+- RabbitMQ (for message queuing)
+- Database (e.g., Sqlite)
+
+## Installation and Running
+1. Install the necessary dependencies.
+2. Ensure that the RabbitMQ server is running.
+3. Start the server with the command `py manage.py runserver`.
+4. Run the scripts in separate terminals: `dramatiq exchange_currency.tasks -p 1` and `py tasks.py`.
+
