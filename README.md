@@ -24,8 +24,8 @@
 ## Установка и запуск
 1. Установите необходимые зависимости.
 2. Убедитесь, что запущен сервер RabbitMQ.
-3. Запустите сервер командой py manage.py runserver
-4. Запустите скрипты в отдельных терминалах: dramatiq exchange_currency.tasks -p 1 и py tasks.py
+3. Запустите сервер командой `py manage.py runserver`.
+4. Запустите скрипты в отдельных терминалах: `dramatiq exchange_currency.tasks -p 1` и `py tasks.py`.
 
 # Online Bank Pet Project
 
